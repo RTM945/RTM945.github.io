@@ -186,12 +186,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         onScrolling(e) {
             const routeName = this.$route.name;
-            const $context = this.$refs['context'];
-            const scrollTop = $context.scrollTop;
+            const $app = this.$refs['app'];
+            const scrollTop = $app.scrollTop;
 
             switch (routeName) {
                 case 'list':
-                    if (!this.isPause && routeName === 'list' && $context.scrollHeight === scrollTop + $context.clientHeight) {
+                    if (!this.isPause && routeName === 'list' && $app.scrollHeight === scrollTop + $app.clientHeight) {
                         clearTimeout(this.timer);
                         this.timer = setTimeout(() => {
                             this.getIssues();
@@ -200,7 +200,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     break;
                 case 'detail':
-                    let $ids = $context.getElementsByClassName('nav-anchor'),
+                    let $ids = $app.getElementsByClassName('nav-anchor'),
                         $hash;
 
                     for (let i = 0, len = $ids.length; i < len; ++i) {
@@ -349,7 +349,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             function addParagraph(t) {
                 let l = t.level - p.level;
 
-                if (l === 1) {
+                if (l == 1 || l < 1 && p.level == 1 || l > 1 && !p.children) {
                     t.parent = p;
                     !p.children && (p.children = []);
                     p.children.push(t);
@@ -393,8 +393,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$emit('loading', false);
 
         let timer = setInterval(() => {
-            if (--this.seconds <= 0) {
-                if (this.$route.path === '/error') this.$router.push('/');
+            if (--this.seconds < 1) {
+                if (!this._isDestroyed) this.$router.push('/');
                 clearInterval(timer);
             }
         }, 1000);
@@ -1719,18 +1719,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    ref: "app",
     attrs: {
       "id": "app"
-    }
-  }, [_c('app-header'), _vm._v(" "), _c('section', {
-    ref: "context",
-    staticClass: "context",
+    },
     on: {
       "scroll": _vm.onScrolling,
       "click": function($event) {
         _vm.isNav = false
       }
     }
+  }, [_c('app-header'), _vm._v(" "), _c('section', {
+    staticClass: "context"
   }, [_c('router-view', {
     ref: "context-view",
     attrs: {
@@ -1756,6 +1756,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "click": function($event) {
+        $event.stopPropagation();
         _vm.isNav = !_vm.isNav
       }
     }
@@ -1998,4 +1999,4 @@ const http = {
 /***/ })
 
 },[171]);
-//# sourceMappingURL=app.js.map?t=0a395206d2385f6fcbe3
+//# sourceMappingURL=app.js.map?t=07fd74bf770176a664e4
