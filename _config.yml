@@ -10,7 +10,7 @@ port: 3000
 safe: true
 
 # edit here to achieve your personal greatness
-url: http://RTM945.github.io/
+url: https://rtmsoft.me/
 title: rtmsoft
 author: rtm
 description: Personal blog
