@@ -11,7 +11,7 @@ safe: true
 
 # edit here to achieve your personal greatness
 url: https://RTM945.github.io
-baseurl: //
+baseurl: /
 title: rtmsoft
 author: rtm
 description: Personal blog
