@@ -192,3 +192,7 @@ pre code{
 .image {
   text-align: center;
 }
+
+.image > img {
+  max-width: 100%;
+}
