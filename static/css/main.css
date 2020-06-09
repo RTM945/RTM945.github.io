@@ -4,9 +4,10 @@ html,
 body {
   height: 100%;
   background-color: #fff;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   /* The html and body elements cannot have any padding or margin. */
   border-top: 3px solid #27A822;
+  line-height: 2;
 }
 /* Wrapper for page content to push down footer */
 #wrap {
@@ -160,8 +161,9 @@ body {
 
 .blogpost{
   text-align: left;
-  line-height: 30px;
+  line-height: 40px;
   font-size: 18px;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 /* Footer 
@@ -185,4 +187,8 @@ div.footer{
 
 pre code{
   white-space: pre;
+}
+
+.image {
+  text-align: center;
 }
