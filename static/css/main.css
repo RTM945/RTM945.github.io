@@ -189,6 +189,10 @@ pre code{
   white-space: pre;
 }
 
+pre {
+  font-size: 18px !important;
+}
+
 .image {
   text-align: center;
 }
