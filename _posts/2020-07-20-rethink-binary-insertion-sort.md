@@ -35,8 +35,8 @@ tags:
 int left = 0;
 int right = nums.length - 1;
 {% endhighlight %}
-数组下标范围是`[0, nums.length - 1]`开区间    
-但也可以使用`[0, nums.length)`左开右闭区间
+数组下标范围是`[0, nums.length - 1]`闭区间    
+但也可以使用`[0, nums.length)`左闭右开区间
 {% highlight java %}
 int left = 0;
 int right = nums.length;
