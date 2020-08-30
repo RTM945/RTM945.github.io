@@ -9,7 +9,9 @@ tags:
 骂归骂，自己爽比较重要。   
 于是记录了一些`Stream`用法防止忘记，基础的`forEach/filter/map`用法就略过了。    
 以后遇到有意思的`Stream`用法，也会记录在这里。    
---- 
+
+---
+ 
 ## Java Stream
 ### flatMap
 经常会迷惑`map`和`flatMap`区别是啥，我也说不好，直接上代码吧。    
