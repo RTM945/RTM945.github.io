@@ -11,11 +11,11 @@ tags:
 以后遇到有意思的`Stream`用法，也会记录在这里。    
 
 ---
- 
+
 ## Java Stream
 ### flatMap
 经常会迷惑`map`和`flatMap`区别是啥，我也说不好，直接上代码吧。    
-它可以用在类似`Map<K, List<T>>`的结构中(或者说`MultiMap`)，用与操作所有集合的元素。    
+它可以用在类似`Map<K, List<T>>`的结构中(或者说`MultiMap`)，操作所有`List<T>`的元素。    
 使用听不懂的说法，它将`Stream<Collection<T>>`"拉平"成`Stream<T>`。   
 注：为了简化基础集合类型的初始化，使用了`Guava`API。    
 
@@ -71,7 +71,7 @@ Map<String, List<String>> map = list
 
 ---
 
-### multiMap transform
+### MultiMap transform
 想改变`MultiMap`中`Entry`的类型。
 {% highlight java %}
 Map<String, List<String>> map = new HashMap<>();
@@ -107,7 +107,7 @@ List<Integer> list = multimap.values();
 
 ---
 
-### convert list to map
+### convert List to Map
 这里的做法是分成两步骤：
 1. 先将`key`提取出来；
 2. 再将`value`转换成所需的格式。     
