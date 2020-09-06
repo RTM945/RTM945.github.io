@@ -63,7 +63,7 @@ Map<String, List<String>> map = list
             // key 冲突时，两个value的处理
             (oldVal, newVal) -> {
                 oldVal.addAll(newVal);
-                return newVal;
+                return oldVal;
             }
         )
     );
