@@ -67,6 +67,10 @@ Map<String, List<String>> map = list
             }
         )
     );
+// groupby
+// but can't change value dirctly
+map = list.stream().collect(Collectors.groupingBy(item -> item.substring(0, 1)));
+System.out.println(map);
 {% endhighlight %}
 
 ---
