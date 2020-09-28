@@ -71,6 +71,10 @@ Map<String, List<String>> map = list
 // but can't change value dirctly
 map = list.stream().collect(Collectors.groupingBy(item -> item.substring(0, 1)));
 System.out.println(map);
+
+// partitioningBy
+Map<Boolean, List<String>> partitioning = list.stream().collect(Collectors.partitioningBy(item -> item.startsWith("A")));
+System.out.println(partitioning);
 {% endhighlight %}
 
 ---
