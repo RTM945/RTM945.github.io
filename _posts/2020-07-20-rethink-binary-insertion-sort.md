@@ -49,7 +49,7 @@ int right = nums.length;
 缩小查找范围后，去左边区间时，`left`不变，`right = mid - 1`还是`right = mid`？    
 去右边区间时，`right`不变，`left = mid + 1`还是`right = mid`？    
     
-先从取值范围来看，如果一开始的取值使用了开区间，子集的取值也应该是开区间
+先从取值范围来看，如果一开始的取值使用了闭区间，子集的取值也应该是闭区间
 {% highlight java %}
 if(nums[mid] < target) {
     left = mid + 1;
@@ -57,7 +57,7 @@ if(nums[mid] < target) {
     right = mid - 1;
 }
 {% endhighlight %}
-如果一开始使用了左开右闭区间，子集的取值也应该是左开右闭区间
+如果一开始使用了左闭右开区间，子集的取值也应该是左闭右开区间
 {% highlight java %}
 if(nums[mid] < target) {
     left = mid + 1;
@@ -66,11 +66,11 @@ if(nums[mid] < target) {
 }
 {% endhighlight %}
 `target`应该存在于`[left, right)`区间中，设`target`为集合的最后一个元素，区间即为`[nums.length - 1, nums.length)`，`left`再增加会越界，循环应写成`while(left < right)`    
-同理在开区间中，`[nums.length - 1, nums.length - 1]`是可以存在的，循环应写成`while(left <= right)`    
+同理在闭区间中，`[nums.length - 1, nums.length - 1]`是可以存在的，循环应写成`while(left <= right)`    
 
 ## 交换
 对于排序来说，找到合适的位置后，就要将元素插入到该位置上，而合适的位置是查找阶段得出的`left`或`right`，它们是相等的，可以随便使用一个    
-通常对于一个集合插入排序来说，假定前半部分是有序的，即假设第一位是有序的，从第二位开始逐渐扩大有序集合，将当前元素与前面的元素做交换，直到插入了前半部分合适的位置    
+通常对于一个集合插入排序来说，假定前半部分是有序的，即假设第一位是有序的，从第二位开始逐渐扩大有序集合，将当前元素与前面的元素做交换，直到插入到有序的前半部分中合适的位置    
 那么就是从当前位置到`left`，从后往前做交换了
 {% highlight java %}
 int x = nums[i];
@@ -82,7 +82,7 @@ for(int j = i; j > left; j--) {
 nums[left] = x;
 {% endhighlight %}
 
-使用golang将正序、逆序、从后往前、从前往后、假定前部有序、假定后部有序的的二分插入排序都实现了一遍，都使用了开区间
+使用golang将正序、逆序、从后往前、从前往后、假定前部有序、假定后部有序的的二分插入排序都实现了一遍，都使用了闭区间
 
 {% highlight golang %}
 package algo
