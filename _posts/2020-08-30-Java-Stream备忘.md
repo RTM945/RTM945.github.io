@@ -201,6 +201,22 @@ Multimap<String, String> multimap = list
 其实原理都和`List`转`MultiMap`一样：先提取出`key`，将`value`转为集合，当`key`冲突时，合并两个集合。
 
 ---
+### list to nested map
+{% highlight java %}
+// pojo ZodiacStar
+// id index value
+// 1  1     star1
+// 1  2     star2
+// ...
+// want Map<Integer, Map<Integer, ZodiacStar>> id -> index -> value
+result = zodiacs.steam()
+    .collect(Collectors.groupingBy(ZodiacStar::getId, Collectors.toMap(ZodiacStar::getIndex, Function.identity())));
+
+// want Map<Integer, Map<Integer, List<ZodiacStar>>> ?
+result = zodiacs.steam()
+    .collect(Collectors.groupingBy(ZodiacStar::getId, Collectors.groupingBy(ZodiacStar::getIndex)));
+{% endhighlight %}    
+---
 
 ## 碎碎念
 年轻的生命中突然出现`Stream`，玩法超多逼格又高，吸引码农们不好好写代码。    
