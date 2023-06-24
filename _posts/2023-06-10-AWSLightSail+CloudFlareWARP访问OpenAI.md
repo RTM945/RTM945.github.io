@@ -98,21 +98,20 @@ warp代理模式会在本地启动一个 sock5 代理`127.0.0.1:40000`，修改 
 "outbounds": [
     {
       "protocol": "freedom",
-      "settings": {}
-	  "tag": "direct"
+      "settings": {},
+      "tag": "direct"
     },
-	{
-	  "protocol": "socks",
-	  "settings": {
-		"servers": [
-			{
-			  "address": "127.0.0.1",
-			  "port": 40000,
-			  "users":[]
-			}
-		]},
-	  "tag": "socks"
-	},
+    {
+      "protocol": "socks",
+      "settings": {
+      "servers": [
+         {
+           "address": "127.0.0.1",
+           "port": 40000,
+           "users":[]
+         ]},
+      "tag": "socks"
+    },
     {
       "protocol": "blackhole",
       "settings": {},
