@@ -90,3 +90,44 @@ warp代理模式会在本地启动一个 sock5 代理`127.0.0.1:40000`，修改 
 如果想使用这个节点打外服的游戏，因为不支持 udp 协议，可能无法 NAT。
 
 可以使用 V2Ray 的路由功能，只让 `openai.com` 之类的网站走 warp 代理，其他请求直接出站，应该可以解决 udp 不支持的问题。
+
+### 加上了路由
+
+把 `freedom` 加了回去
+```
+"outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+	  "tag": "direct"
+    },
+	{
+	  "protocol": "socks",
+	  "settings": {
+		"servers": [
+			{
+			  "address": "127.0.0.1",
+			  "port": 40000,
+			  "users":[]
+			}
+		]},
+	  "tag": "socks"
+	},
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+],
+```
+
+在路由配置 `routing` 中的 `rules` 添加 
+
+```
+{
+  "type": "field",
+  "outboundTag": "socks",
+  "domain": ["openai.com", "openai.org"]
+}
+
+```
