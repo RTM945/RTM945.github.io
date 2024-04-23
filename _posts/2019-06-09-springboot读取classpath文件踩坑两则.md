@@ -45,9 +45,9 @@ for (Resource resource : resources) {
 --- 
 
 ## 2024-04-23 update 
-上述方法只能获取 lib 中的 package 下的 class , 如果项目本体中有包名相同的则无法获取  
-(如果包名相同类目也相同, 本体的 class 会覆盖 lib 中的, 这个特性有时候很有用) 
-
+上述方法只能获取 lib 中的 package 下的 class , 如果项目本体中有包名相同的则无法获取   
+如果包名相同类目也相同, 本体的 class 会覆盖 lib 中的, 这个特性有时候很有用  
+ 
 Guava 获取所有 class 找特定 package 下的 class
 {% highlight java %}
 Set<? extends Class<?>> collect = ClassPath.from(ClassLoader.getSystemClassLoader())
