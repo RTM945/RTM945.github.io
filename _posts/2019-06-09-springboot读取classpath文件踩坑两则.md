@@ -57,4 +57,4 @@ Set<? extends Class<?>> collect = ClassPath.from(ClassLoader.getSystemClassLoade
       .map(clazz -> clazz.load())
       .collect(Collectors.toSet());
 // 有时候有需求将class实例化, 但有些class是抽象类等无法被实例化的类, 挨个儿做好try catch即可
-{% highlight java %}
+{% endhighlight java %}
