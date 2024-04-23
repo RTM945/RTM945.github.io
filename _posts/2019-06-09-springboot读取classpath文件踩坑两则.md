@@ -45,10 +45,10 @@ for (Resource resource : resources) {
 --- 
 
 ## 2024-04-23 update 
-上述方法只能获取lib中的package下的class, 如果项目本体中有包名相同的则无法获取. (PS. 如果包名相同类目也相同, 本体的class会覆盖lib中的, 这个特性有时候很有用) 
+上述方法只能获取lib中的package下的class, 如果项目本体中有包名相同的则无法获取. (如果包名相同类目也相同, 本体的class会覆盖lib中的, 这个特性有时候很有用) 
 
+Guava 获取所有class 找特定package下的class
 {% highlight java %}
-// Guava 获取所有class 找特定package下的class
 Set<? extends Class<?>> collect = ClassPath.from(ClassLoader.getSystemClassLoader())
       .getAllClasses()
       .stream()
@@ -56,5 +56,5 @@ Set<? extends Class<?>> collect = ClassPath.from(ClassLoader.getSystemClassLoade
         .equalsIgnoreCase(packageName))
       .map(clazz -> clazz.load())
       .collect(Collectors.toSet());
-// 有时候有需求将class实例化, 但有些class是抽象类等无法被实例化的类, 挨个儿做好try catch即可
 {% endhighlight java %}
+有时候有需求将class实例化, 但有些class是抽象类等无法被实例化的类, 挨个儿做好try catch即可
