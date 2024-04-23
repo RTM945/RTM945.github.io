@@ -6,7 +6,7 @@ tags:
 - SpringBoot
 ---
 
-遇到了一个获取不到springboot classpath下的文件的问题，无论是自定义的配置文件，还是class文件，记录一下解决用的代码  
+遇到了一个获取不到springboot classpath下的文件的问题, 无论是自定义的配置文件, 还是class文件, 记录一下解决用的代码  
 
 ## 读取classpath下的某文件夹下的json文件
 {% highlight java %}
@@ -45,9 +45,10 @@ for (Resource resource : resources) {
 --- 
 
 ## 2024-04-23 update 
-上述方法只能获取lib中的package下的class, 如果项目本体中有包名相同的则无法获取. (如果包名相同类目也相同, 本体的class会覆盖lib中的, 这个特性有时候很有用) 
+上述方法只能获取 lib 中的 package 下的 class , 如果项目本体中有包名相同的则无法获取  
+(如果包名相同类目也相同, 本体的 class 会覆盖 lib 中的, 这个特性有时候很有用) 
 
-Guava 获取所有class 找特定package下的class
+Guava 获取所有 class 找特定 package 下的 class
 {% highlight java %}
 Set<? extends Class<?>> collect = ClassPath.from(ClassLoader.getSystemClassLoader())
       .getAllClasses()
@@ -57,4 +58,4 @@ Set<? extends Class<?>> collect = ClassPath.from(ClassLoader.getSystemClassLoade
       .map(clazz -> clazz.load())
       .collect(Collectors.toSet());
 {% endhighlight java %}
-有时候有需求将class实例化, 但有些class是抽象类等无法被实例化的类, 挨个儿做好try catch即可
+有时候有需求将 class 实例化, 但有些 class 是抽象类等无法被实例化的类, 挨个儿做好 try catch 即可
